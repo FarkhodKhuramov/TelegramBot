@@ -1,0 +1,12 @@
+.vscode/settings.json
+target/demo-1.0-SNAPSHOT.jar
+target/classes/com/example/testbot/App.class
+target/classes/com/example/testbot/MyBot.class
+target/maven-archiver/pom.properties
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+target/surefire-reports/com.example.testbot.AppTest.txt
+target/surefire-reports/TEST-com.example.testbot.AppTest.xml
+target/test-classes/com/example/testbot/AppTest.class

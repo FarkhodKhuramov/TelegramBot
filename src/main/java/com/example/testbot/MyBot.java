@@ -15,8 +15,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
     private final static String BOT_NAME = "FarkhodKh_bot";
     private String rules = "Правила не установлены";
     private String tarifs = "Тарифы не установлены";
-    private final String owner = "farhod_10";
-    private Set<String> owners = new HashSet<>(Arrays.asList(owner));
+    private Set<String> owners;
     // КОМАНДЫ
     private final String COMMAND_SEPARATOR = "=";
     private final String COMMAND_RULES = "/rules";
@@ -28,6 +27,11 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
     private final String COMMAND_SHOW_OWNERS = "/showOwners";
     
 
+    public MyBot(){
+        String owner1 = "Farhod_10";
+        String owner2 = "azizimnzrv";
+        owners = new HashSet<>(Arrays.asList(owner1, owner2));
+    }
 
     @Override
     public String getBotUsername() {
@@ -129,6 +133,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
     private void sendMsg(SendMessage message){
         try{
+            System.out.println("response: " + message.getText());
             execute(message);
         }catch(TelegramApiException e){
             e.printStackTrace();

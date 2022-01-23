@@ -28,6 +28,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
     
 
     public MyBot(){
+        super();
         String owner1 = "Farhod_10";
         String owner2 = "azizimnzrv";
         owners = new HashSet<>(Arrays.asList(owner1, owner2));

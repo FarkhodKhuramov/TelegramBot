@@ -11,19 +11,19 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
  public class MyBot extends TelegramLongPollingBot{ 
 
-    private final static String TOKEN = "5166396671:AAGflOsFm5anj120y15srGcvv0p543BTlFQ";
+    private final static String TOKEN = "5166396671:AAH5SZp-YS4lalD2Q3qMcyfaRS0VoauS6Jg";
     private final static String BOT_NAME = "FarkhodKh_bot";
     private String rules = "Правила не установлены";
     private String tarifs = "Тарифы не установлены";
     private Set<String> owners;
     // КОМАНДЫ
-    private final String COMMAND_SEPARATOR = "=";
+    private String command = "";
     private final String COMMAND_RULES = "/rules";
     private final String COMMAND_TARIFS = "/tarifs";
-    private final String COMMAND_NEW_RULES = "/setNewRules" + COMMAND_SEPARATOR;
-    private final String COMMAND_NEW_TARIFS = "/setNewTarifs" + COMMAND_SEPARATOR;
-    private final String COMMAND_ADD_OWNER = "/addOwner" + COMMAND_SEPARATOR;
-    private final String COMMAND_REMOVE_OWNER = "/removeOwner" + COMMAND_SEPARATOR;
+    private final String COMMAND_NEW_RULES = "/setNewRules";
+    private final String COMMAND_NEW_TARIFS = "/setNewTarifs";
+    private final String COMMAND_ADD_OWNER = "/addOwner";
+    private final String COMMAND_REMOVE_OWNER = "/removeOwner";
     private final String COMMAND_SHOW_OWNERS = "/showOwners";
     
 
@@ -56,6 +56,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
         
         // ДОБАВЛЕН НОВЫЙ УЧАСТНИК, ПОКАЗЫВАЕМ ПРАВИЛА
         if(arg0.getMessage().getNewChatMembers().size()>0){
+            System.out.println("New member added");
             msg.setText(rules);
             msg.setReplyToMessageId(null);
             sendMsg(msg);
@@ -66,21 +67,26 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
         if(arg0.hasMessage() && arg0.getMessage().hasText()){
             System.out.println(arg0.getMessage().getText());
             message = arg0.getMessage();
+            command = arg0.getMessage().getText();
         }else{
             System.out.println("No text in the message or no message");
             return;
         }    
         
         // ПРАВИЛА
-        if(message.getText().startsWith(COMMAND_RULES)){
-            System.out.println(COMMAND_RULES);
+        if(command.startsWith(COMMAND_RULES)){
+            System.out.println(command);
             msg.setText(rules);
+            sendMsg(msg);
+            return;
         } 
         
         // ТАРИФЫ        
-        if(message.getText().startsWith(COMMAND_TARIFS)){
-            System.out.println(COMMAND_TARIFS);
+        if(command.startsWith(COMMAND_TARIFS)){
+            System.out.println(command);
             msg.setText(tarifs);
+            sendMsg(msg);
+            return;
         } 
     
         // ПРОВЕРКА НА ВЛАДЕЛЬЦА
@@ -90,35 +96,42 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
         }
 
         // ЗАДАТЬ НОВЫЕ ПРАВИЛА        
-        if(message.getText().startsWith(COMMAND_NEW_RULES)){
-            System.out.println();
-            rules = message.getText().substring(message.getText().indexOf(COMMAND_SEPARATOR)+1).trim();
+        if(command.startsWith(COMMAND_NEW_RULES)){
+            System.out.println(command);
+            rules = command.substring(COMMAND_NEW_RULES.length() + 1).trim();
             msg.setText("The rules have just been changed");
+            sendMsg(msg);
+            return;
         }
         
         // ЗАДАТЬ НОВЫЕ ТАРИФЫ        
         if(message.getText().startsWith(COMMAND_NEW_TARIFS)){
-            System.out.println(COMMAND_NEW_TARIFS);
-            tarifs = message.getText().substring(message.getText().indexOf(COMMAND_SEPARATOR)+1).trim();
+            System.out.println(command);
+            tarifs = command.substring(COMMAND_NEW_TARIFS.length()+ 1 ).trim();
             msg.setText("The Tarifs have just been changed");
+            sendMsg(msg);
+            return;
         }
 
         // ДОБАВИТЬ ВЛАДЕЛЬЦА
         if(message.getText().startsWith(COMMAND_ADD_OWNER)){
-            System.out.println(COMMAND_ADD_OWNER);
-            addOwner(message.getText().substring(message.getText().indexOf(COMMAND_SEPARATOR) + 1).trim());
+            System.out.println(command);
+            addOwner(command.substring(COMMAND_ADD_OWNER.length() + 1).trim());
+            return;
         }
 
         // УДАЛИТЬ ВЛАДЕЛЬЦА
         if(message.getText().startsWith(COMMAND_REMOVE_OWNER)){
-            System.out.println(COMMAND_REMOVE_OWNER);
-            removeOwner(message.getText().substring(message.getText().indexOf(COMMAND_SEPARATOR) + 1).trim());
+            System.out.println(command);
+            removeOwner(command.substring(COMMAND_REMOVE_OWNER.length() + 1).trim());
+            return;
         }
 
         // ПОКАЗАТЬ ВСЕХ ВЛАДЕЛЬЦЕВ    
         if(message.getText().startsWith(COMMAND_SHOW_OWNERS)){
-            System.out.println(COMMAND_SHOW_OWNERS);
+            System.out.println(command);
             showOwners(msg);
+            return;
         }
 
     }

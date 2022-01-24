@@ -1,5 +1,4 @@
 .vscode/settings.json
-target/demo-1.0-SNAPSHOT.jar
 target/classes/com/example/testbot/App.class
 target/classes/com/example/testbot/MyBot.class
 target/maven-archiver/pom.properties

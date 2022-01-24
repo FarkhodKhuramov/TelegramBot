@@ -1,1 +1,1 @@
-worker:sh target/classes/com/example/testbot/App
+worker: java -cp target/classes com.example.testbot.App

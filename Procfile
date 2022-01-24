@@ -1,1 +1,1 @@
-worker: sh target/classes/com/example/testbot/Appgit 
+worker: sh target/classes/com/example/testbot/App

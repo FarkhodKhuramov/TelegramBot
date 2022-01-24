@@ -1,1 +1,1 @@
-worker: sh java -jar target\demo-1.0-SNAPSHOT.jat
+worker: sh java -jar target\demo-1.0-SNAPSHOT.jar

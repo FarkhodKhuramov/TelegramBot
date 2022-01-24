@@ -96,6 +96,12 @@
           <groupId>com.heroku.sdk</groupId>
           <artifactId>heroku-maven-plugin</artifactId>
           <version>3.0.3</version>
+          <configuration>
+            <appName>demo</appName>
+            <processTypes>
+              <worker>java target/classes/com/example/testbot/App</worker>
+            </processTypes>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>

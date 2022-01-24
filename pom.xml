@@ -171,7 +171,7 @@
                 </execution>
             </executions>
         </plugin>  -->
-        <!-- <plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.1.0</version>
@@ -179,12 +179,12 @@
             <archive>
               <manifest>
                 <addClasspath>true</addClasspath>
-                <classpathPrefix>lib/</classpathPrefix>
+                <classpathPrefix>target/</classpathPrefix>
                 <mainClass>com.example.testbot.App</mainClass>
               </manifest>
             </archive>
           </configuration>
-        </plugin> -->
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>

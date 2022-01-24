@@ -79,6 +79,11 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
+          <archive>
+              <manifest>
+                <mainClass>com.example.testbot.App</mainClass>
+              </manifest>
+            </archive> 
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -152,11 +157,7 @@
         <plugin>
           <artifactId>maven-assembly-plugin</artifactId>
           <configuration>
-            <archive>
-              <manifest>
-                <mainClass>com.example.testbot.App</mainClass>
-              </manifest>
-            </archive>
+            
             <descriptorRefs>
               <descriptorRef>jar-with-dependencies</descriptorRef>
             </descriptorRefs>

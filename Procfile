@@ -1,1 +1,1 @@
-web: java -jar target/*.jar
+worker: java -jar target/java-telegram-bot-heroku-starter.jar <!--HERE MAIN CLASS LIKE com.example.Main-->

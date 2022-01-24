@@ -74,15 +74,6 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <addClasspath>true</addClasspath>
-                <classpathPrefix>lib/</classpathPrefix>
-                <mainClass>com.example.testbot.App</mainClass>
-              </manifest>
-            </archive>
-          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -101,18 +92,18 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
-        <plugin>
+        <!-- <plugin>
           <groupId>com.heroku.sdk</groupId>
           <artifactId>heroku-maven-plugin</artifactId>
           <version>3.0.3</version>
           <configuration>
             <appName>demo</appName>
             <processTypes>
-              <worker>java target/classes/com/example/testbot/App</worker>
+              <worker>java -cp target/classes com.example.testbot.App</worker>
             </processTypes>
           </configuration>
-        </plugin>
-        <!-- <plugin>
+        </plugin> -->
+        <plugin>
           <artifactId>maven-assembly-plugin</artifactId>
           <configuration>
             <archive>
@@ -125,7 +116,7 @@
             </descriptorRefs>
           </configuration>
         </plugin> 
-        <plugin>
+        <!-- <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.1.0</version>
